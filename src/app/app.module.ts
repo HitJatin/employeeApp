@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeDetailsModule } from './employee-details/employee-details.module';
-import { MatSliderModule } from "@angular/material/slider";
+import { QueryRecordsRoutingModule } from './query-records/query-records-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MatSliderModule } from "@angular/material/slider";
     AppRoutingModule,
     BrowserAnimationsModule,
     EmployeeDetailsModule,
-    MatSliderModule
+    QueryRecordsRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

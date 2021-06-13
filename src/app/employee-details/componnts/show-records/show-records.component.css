@@ -1,0 +1,16 @@
+.componentHead{
+    text-align: center;
+}
+
+.full-width-table {
+    width: 100%;
+}
+
+.closeIcon {
+    color: red;
+}
+
+.closeIcon:hover {
+    cursor: pointer;
+}
+  
