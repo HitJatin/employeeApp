@@ -55,4 +55,6 @@
     <tr mat-header-row *matHeaderRowDef="employeeColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: employeeColumns;" (dblclick)="show(row)"></tr>
   </table>
-  <button (click)="add()">Add Record</button>
+  <div class="buttonarea">
+    <button id="addButton" mat-raised-button color="primary" (click)="add()">Add Record</button>
+  </div>

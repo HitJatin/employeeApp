@@ -1,0 +1,23 @@
+/*--------------------------          Heading            ------------------*/
+
+.head {
+    display: flex;
+    background-image: linear-gradient( 45deg, blue, transparent);
+    padding: 10px 0px;
+}
+#icon {
+    color: white;
+    width: 6%;
+    text-align: center;
+}
+#icon mat-icon{
+    font-size: 42px;
+    padding: 4px;
+}
+#title {
+    margin: auto;
+    margin-left: 0px;
+    font-size: 32px;
+    color: white;
+}
+

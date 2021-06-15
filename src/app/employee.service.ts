@@ -29,6 +29,36 @@ export class EmployeeService {
       );
   }
 
+  getEmployeeNo404<Data>(empid: number): Observable<Employee> {
+    const url = `${this.employeeUrlForId}/?id=${empid}`;
+    return this.http.get<Employee[]>(url)
+      .pipe(
+        map(employee => employee[0]), 
+        catchError(this.handleError<Employee>(`getEmployee empid=${empid}`))
+      );
+  }
+
+  getEmployee(empid: number): Observable<Employee> {
+    const url= `${this.employeeUrlForId}/${empid}`;
+    return this.http.get<Employee[]>(url).pipe(
+      map(employee => employee[0]),
+      catchError(this.handleError<Employee>(`getEmployee empid=${empid}`))
+    );
+  }
+
+  updateEmployee(employee: Employee): Observable<any> {
+    const url = `${this.employeeUrlForId}/${employee.empid}`;
+    return this.http.put(url, employee, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateEmployee'))
+    );
+  }
+
+  addEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.employeeUrl, employee, this.httpOptions).pipe(
+      catchError(this.handleError<Employee>('addHero'))
+    );
+  }
+
   deleteEmployee(empid: number): Observable<Employee> {
     const url =`${this.employeeUrlForId}/${empid}`;
 

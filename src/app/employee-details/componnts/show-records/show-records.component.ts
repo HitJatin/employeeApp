@@ -29,8 +29,7 @@ export class ShowRecordsComponent implements OnInit {
   }
 
   delete(employee: Employee): void {
-    this.employeeData = this.employeeData.filter(e => e !== employee);
-    this.employeeService.deleteEmployee(employee.empid).subscribe();
+    this.employeeService.deleteEmployee(employee.empid).subscribe(() => this.getEmployees());
   }
 
   add(): void {

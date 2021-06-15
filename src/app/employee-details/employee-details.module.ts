@@ -7,6 +7,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from "@angular/common/http";
 import {MatIconModule} from '@angular/material/icon';
 import { QueryRecordsRoutingModule } from '../query-records/query-records-routing.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { QueryRecordsRoutingModule } from '../query-records/query-records-routin
     MatSortModule,
     HttpClientModule,
     MatIconModule,
-    QueryRecordsRoutingModule
+    QueryRecordsRoutingModule,
+    MatButtonModule
   ],
   exports: [
     ShowRecordsComponent
