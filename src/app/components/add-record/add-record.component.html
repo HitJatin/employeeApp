@@ -1,75 +1,79 @@
-<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-    <table class="tableHead">
-        <tr>
-            <td class="formLabel">Name</td>
-            <td class="formField">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your name</mat-label>
-                    <input matInput type="text" placeholder="Name" formControlName="name" required>
-                    <mat-error *ngIf="name?.invalid">
-                        <div *ngIf="name?.errors?.required">Name is required</div>
-                        <div *ngIf="name?.errors?.pattern">First letter capital & rest small</div>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
+<h2 class="componentHead">Add Record</h2>
+<div id="add-record">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <table class="tableHead">
+            <tr>
+                <td class="formLabel">Name</td>
+                <td class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your name</mat-label>
+                        <input matInput type="text" placeholder="Name" formControlName="name" required>
+                        <mat-error *ngIf="name?.invalid">{{getErrorMessage(name?.errors,"Name")}}</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-        <tr>
-            <td class="formLabel">E-mail</td>
-            <td class="formField">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your E-mail</mat-label>
-                    <input matInput type="email" placeholder="placeholder@example.in" formControlName="email" required>
-                    <mat-error *ngIf="email?.invalid">
-                        <div *ngIf="email?.errors?.required">E-mail is required</div>
-                        <div *ngIf="email?.errors?.email">Enter a valid email</div>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
+            <tr>
+                <td class="formLabel">E-mail</td>
+                <td class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your E-mail</mat-label>
+                        <input matInput type="email" placeholder="placeholder@example.in" formControlName="email"
+                            required>
+                        <mat-error *ngIf="email?.invalid">{{getErrorMessage(email?.errors,"E-mail")}}</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-        <tr>
-            <td class="formLabel">Phone</td>
-            <td class="formField">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your Phone No.</mat-label>
-                    <input matInput type="number" placeholder="Phone" formControlName="phone" required>
-                    <mat-error *ngIf="phone?.invalid">
-                        <div *ngIf="phone?.errors?.required">Phone is required</div>
-                        <div *ngIf="phone?.errors?.pattern">Invalid Phone number</div>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
+            <tr>
+                <td class="formLabel">Phone</td>
+                <td class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your Phone No.</mat-label>
+                        <input matInput type="number" placeholder="Phone" formControlName="phone" required>
+                        <mat-error *ngIf="phone?.invalid">{{getErrorMessage(phone?.errors,"Phone")}}</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-        <tr>
-            <td class="formLabel">Salary</td>
-            <td class="formField">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your Salary</mat-label>
-                    <input matInput type="number" placeholder="Salary" formControlName="salary" required>
-                    <mat-error *ngIf="salary?.invalid">
-                        <div *ngIf="salary?.errors?.required">Salary is required</div>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
+            <tr>
+                <td class="formLabel">Salary</td>
+                <td class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your Salary</mat-label>
+                        <input matInput type="number" placeholder="Salary" formControlName="salary" required>
+                        <mat-error *ngIf="salary?.invalid">{{getErrorMessage(salary?.errors,"Salary")}}</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-        <tr>
-            <td class="formLabel">Department</td>
-            <td class="formField">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your Department</mat-label>
-                    <mat-select formControlName="department" required multiple>
-                        <mat-option *ngFor="let departments of departmentList" [value]="department">{{departments}}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="department?.invalid">
-                        <div *ngIf="department?.errors?.required">Department is required</div>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
+            <tr>
+                <td class="formLabel">Department</td>
+                <td class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your Department</mat-label>
+                        <mat-select formControlName="department" required multiple>
+                            <mat-form-field appearance="fill" id="searchDepartment">
+                                <mat-label>Department</mat-label>
+                                <input matInput id="search-text" type="text" placeholder="Department"
+                                    [formControl]='searchText' autofocus>
+                            </mat-form-field>
+                            <mat-option *ngFor="let dept of departmentList | deptFilter:searchText.value"
+                                [value]="dept.id">{{dept.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="department?.invalid">{{getErrorMessage(department?.errors,"Department")}}</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-    </table>
-    <button type="submit">Submit</button>
-</form>
+        </table>
+        <div id="button-area">
+            <button class="add-buttons" mat-raised-button color="primary" (click)="goBack()">Cancel</button>
+            <button class="add-buttons" mat-raised-button color="primary" [disabled]="employeeForm.invalid"
+                type="submit">Submit</button>
+        </div>
+    </form>
+    <div id="add-record-image">
+        <img src="assets/img/add-employee.png" alt="image">
+    </div>
+</div>

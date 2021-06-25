@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchDepartmentComponent } from './search-department.component';
+import { AddEditRecordComponent } from './add-edit-record.component';
 
-describe('SearchDepartmentComponent', () => {
-  let component: SearchDepartmentComponent;
-  let fixture: ComponentFixture<SearchDepartmentComponent>;
+describe('AddEditRecordComponent', () => {
+  let component: AddEditRecordComponent;
+  let fixture: ComponentFixture<AddEditRecordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchDepartmentComponent ]
+      declarations: [ AddEditRecordComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchDepartmentComponent);
+    fixture = TestBed.createComponent(AddEditRecordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

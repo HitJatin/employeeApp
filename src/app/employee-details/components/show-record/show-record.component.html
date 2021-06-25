@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{employee.name}}</h1>
+<div mat-dialog-content>
+    <table>
+        <tr>
+            <td class="formLabel">E-mail</td>
+            <td class="formLabel">{{employee.email}}</td>
+        </tr>
+
+        <tr>
+            <td class="formLabel">Phone</td>
+            <td class="formLabel">{{employee.phone}}</td>
+        </tr>
+
+        <tr>
+            <td class="formLabel">Salary</td>
+            <td class="formLabel">{{employee.salary}}</td>
+        </tr>
+
+        <tr>
+            <td class="formLabel">Department</td>
+            <td class="formLabel">{{employee.department}}</td>
+        </tr>
+    </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()" cdkFocusInitial>OK</button>
+</div>

@@ -1,5 +1,7 @@
 .componentHead{
     text-align: center;
+    font-size: 28px;
+    padding: 20px;
 }
 
 .tableHead {
@@ -8,7 +10,39 @@
 
 .formLabel{
     text-align: left;
-    padding-left: 10px;
-    left: 5px;
+    padding-left: 120px;
 }
 
+.formField{
+    padding-left: 60px;
+}
+
+.formField .mat-form-field {
+    width: 300px;
+}
+
+#add-record {
+    width: 100%;
+    display: flex;
+}
+
+#add-record form, #add-record-image {
+    width: 50%;
+}
+
+#add-record-image img {
+    width: 450px;
+    padding-left: 60px;
+}
+
+.add-buttons {
+    margin: 10px;
+    font-size: 20px;
+}
+#button-area {
+    margin-left: 190px;
+}
+
+#searchDepartment {
+    width: 100%;
+}

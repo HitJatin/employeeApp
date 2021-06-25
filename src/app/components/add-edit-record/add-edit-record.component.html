@@ -1,0 +1,82 @@
+<h2 class="componentHead">{{head}}</h2>
+<div id="add-edit-record">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="dataField" *ngIf="editMode">
+            <div class="formLabel">Employee ID</div>
+            <div class="formLabel">{{employeeId}}</div>
+        </div>
+
+        <div class="dataField">
+            <div class="formLabel">Name</div>
+            <div class="formField">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput type="text" placeholder="Name" formControlName="name" required>
+                    <mat-error *ngIf="name?.invalid">{{getErrorMessage(name?.errors,"Name")}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="dataField">
+            <div class="formLabel">E-mail</div>
+            <div class="formField">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your E-mail</mat-label>
+                    <input matInput type="email" placeholder="placeholder@example.in" formControlName="email" required>
+                    <mat-error *ngIf="email?.invalid">{{getErrorMessage(email?.errors,"E-mail")}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="dataField">
+            <div class="formLabel">Phone</div>
+            <div class="formField">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your Phone No.</mat-label>
+                    <input matInput type="number" placeholder="Phone" formControlName="phone" required>
+                    <mat-error *ngIf="phone?.invalid">{{getErrorMessage(phone?.errors,"Phone")}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="dataField">
+            <div class="formLabel">Salary</div>
+            <div class="formField">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your Salary</mat-label>
+                    <input matInput type="number" placeholder="Salary" formControlName="salary" required>
+                    <mat-error *ngIf="salary?.invalid">{{getErrorMessage(salary?.errors,"Salary")}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="dataField">
+            <div class="formLabel">Department</div>
+            <div class="formField">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your Department</mat-label>
+                    <mat-select formControlName="department" required multiple>
+                        <mat-form-field appearance="fill" id="searchDepartment">
+                            <mat-label>Department</mat-label>
+                            <input matInput id="search-text" type="text" placeholder="Department"
+                                [formControl]='searchText' autofocus>
+                        </mat-form-field>
+                        <mat-option *ngFor="let dept of departmentList | deptFilter:searchText.value" [value]="dept.id">
+                            {{dept.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="department?.invalid">{{getErrorMessage(department?.errors,"Department")}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div id="button-area">
+            <button class="buttons" mat-raised-button color="primary" (click)="goBack()">Cancel</button>
+            <button class="buttons" mat-raised-button color="primary" [disabled]="employeeForm.invalid"
+                type="submit">Submit</button>
+        </div>
+    </form>
+    <div id="add-edit-record-image">
+        <img src="assets/img/add-edit-employee.png" alt="image">
+    </div>
+</div>

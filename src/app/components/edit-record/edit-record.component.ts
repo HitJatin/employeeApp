@@ -28,7 +28,7 @@ export class EditRecordComponent implements OnInit {
     email:"",
     phone:"",
     salary:0,
-    department:""
+    department:[]
   }
 
   constructor(
@@ -39,6 +39,7 @@ export class EditRecordComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployee();
+    this.employeeForm.controls['empid'].disable();
   }
 
   getEmployee(): void {
@@ -63,5 +64,24 @@ export class EditRecordComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  get id() {
+    return this.employeeForm.get('empid');
+  }
+  get name() {
+    return this.employeeForm.get('name');
+  }
+  get email() {
+    return this.employeeForm.get('email');
+  }
+  get phone() {
+    return this.employeeForm.get('phone');
+  }
+  get salary() {
+    return this.employeeForm.get('salary');
+  }
+  get department() {
+    return this.employeeForm.get('department');
   }
 }

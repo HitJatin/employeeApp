@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { Employee } from "src/app/interface";
 import { EmployeeService } from "src/app/employee.service";
 import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { ShowRecordComponent } from "../show-record/show-record.component";
 
 @Component({
   selector: 'app-show-records',
@@ -16,7 +19,8 @@ export class ShowRecordsComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -28,15 +32,24 @@ export class ShowRecordsComponent implements OnInit {
       .subscribe(employees => this.employeeData = employees);
   }
 
-  delete(employee: Employee): void {
-    this.employeeService.deleteEmployee(employee.empid).subscribe(() => this.getEmployees());
-  }
-
   add(): void {
     this.router.navigateByUrl('/addrecord');
   }
 
   show(employee:Employee): void {
-    this.router.navigateByUrl('/showrecord/'+employee.empid);
+    console.log(employee);
+    this.dialog.open(ShowRecordComponent, {
+      width: '500px',
+      data: employee
+    });
+  }
+
+  confirmDelete(employee: Employee): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '250px',
+      data: employee
+    });
+
+    dialogRef.afterClosed().subscribe(() => this.getEmployees());
   }
 }

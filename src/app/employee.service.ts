@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from "rxjs";
 
-import { Employee } from "./interface";
+import { Employee, EmployeeNoId } from "./interface";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -53,9 +53,9 @@ export class EmployeeService {
     );
   }
 
-  addEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.employeeUrl, employee, this.httpOptions).pipe(
-      catchError(this.handleError<Employee>('addHero'))
+  addEmployee(employee: EmployeeNoId): Observable<EmployeeNoId> {
+    return this.http.post<EmployeeNoId>(this.employeeUrl, employee, this.httpOptions).pipe(
+      catchError(this.handleError<EmployeeNoId>('addEmployee'))
     );
   }
 
