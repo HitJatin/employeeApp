@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Employee } from 'src/app/interface';
 
 @Component({
   selector: 'app-add-edit-record',
@@ -109,19 +108,7 @@ export class AddEditRecordComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  get name() {
-    return this.employeeForm.get('name');
-  }
-  get email() {
-    return this.employeeForm.get('email');
-  }
-  get phone() {
-    return this.employeeForm.get('phone');
-  }
-  get salary() {
-    return this.employeeForm.get('salary');
-  }
-  get department() {
-    return this.employeeForm.get('department');
+  field(fieldName: string) {
+    return this.employeeForm.get(fieldName);
   }
 }

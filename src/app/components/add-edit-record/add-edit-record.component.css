@@ -1,0 +1,47 @@
+.componentHead{
+    text-align: center;
+    font-size: 28px;
+    padding: 10px;
+}
+
+#add-edit-record {
+    width: 100%;
+    display: flex;
+}
+
+#add-edit-record form, #add-edit-record-image {
+    width: 50%;
+}
+
+#add-edit-record-image img {
+    padding: 0% 10%;
+    width: 80%;
+}
+
+.dataField, #button-area {
+    width: 100%;
+    display: flex;
+}
+
+.formLabel{
+    width: 40%;
+    font-size: 20px;
+    padding: 3%;
+}
+
+.formField .mat-form-field {
+    width: 300px;
+}
+
+#button-area {
+    padding: 0% 25%;
+}
+
+.buttons {
+    margin: 15px;
+    font-size: 20px;
+}
+
+#searchDepartment {
+    width: 100%;
+}

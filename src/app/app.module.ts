@@ -5,10 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeDetailsModule } from './employee-details/employee-details.module';
-import { QueryRecordsRoutingModule } from './query-records/query-records-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddRecordComponent } from './components/add-record/add-record.component';
-import { EditRecordComponent } from './components/edit-record/edit-record.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from "@angular/material/input";
@@ -21,8 +18,6 @@ import { AddEditRecordComponent } from './components/add-edit-record/add-edit-re
 @NgModule({
   declarations: [
     AppComponent,
-    AddRecordComponent,
-    EditRecordComponent,
     FilterPipe,
     AddEditRecordComponent
   ],
@@ -31,7 +26,6 @@ import { AddEditRecordComponent } from './components/add-edit-record/add-edit-re
     AppRoutingModule,
     BrowserAnimationsModule,
     EmployeeDetailsModule,
-    QueryRecordsRoutingModule,
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,
