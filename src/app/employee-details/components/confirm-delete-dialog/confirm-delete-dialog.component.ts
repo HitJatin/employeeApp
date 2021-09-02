@@ -25,7 +25,8 @@ export class ConfirmDeleteDialogComponent implements OnInit {
   }
 
   deleteRecord(): void {
-    this.employeeService.deleteEmployee(this.employee.empid).subscribe(() => this.snackbar.open("Record deleted","Dismiss"));
+    this.employeeService.deleteEmployee(this.employee.empid)
+    // .subscribe(() => this.snackbar.open("Record deleted","Dismiss"));
     this.dialogRef.close();
   }
 }

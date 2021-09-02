@@ -20,3 +20,9 @@ export interface Department {
     name: string,
     selected: boolean,
 }
+
+export interface PageRecord {
+    totalRecords: number,
+    recordsPerPage: number,
+    recordsPerPageOptions: number[]
+}
