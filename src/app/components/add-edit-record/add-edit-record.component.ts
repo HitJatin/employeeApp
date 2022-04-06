@@ -26,12 +26,12 @@ export class AddEditRecordComponent implements OnInit {
     { id: 1, name: 'Product', selected: false },
     { id: 2, name: 'Sales', selected: false },
     { id: 3, name: 'Delivery', selected: false },
-    { id: 4, name: 'Development', selected: false },
-    { id: 5, name: 'Operations', selected: false },
-    { id: 6, name: 'Testing', selected: false },
-    { id: 7, name: 'Services', selected: false },
-    { id: 8, name: 'Core', selected: false },
-    { id: 9, name: 'IT', selected: false },
+    { id: 4, name: 'Operations', selected: false },
+    { id: 5, name: 'Testing', selected: false },
+    { id: 6, name: 'Services', selected: false },
+    { id: 7, name: 'Core', selected: false },
+    { id: 8, name: 'IT', selected: false },
+    { id: 9, name: 'Development', selected: false },
   ];
   // private searchTerms = new Subject<string>();
   // filteredDepartments: Observable<string[]> | undefined;
@@ -62,11 +62,14 @@ export class AddEditRecordComponent implements OnInit {
     this.employeeService.getEmployee(this.employeeId)
       .subscribe(employee => {
         this.employeeId = employee.empid;
+        let departmentList = [];
+        for(let i=0;i<employee.department.length;i++)
+        departmentList.push(this.departmentList.find(department => department.name == employee.department[i])?.id);
         this.employeeForm.get('name')?.setValue(employee.name);
         this.employeeForm.get('email')?.setValue(employee.email);
         this.employeeForm.get('phone')?.setValue(employee.phone);
         this.employeeForm.get('salary')?.setValue(employee.salary);
-        this.employeeForm.get('department')?.setValue(employee.department);
+        this.employeeForm.get('department')?.setValue(departmentList);
       });
   }
 

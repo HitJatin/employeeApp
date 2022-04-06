@@ -40,8 +40,8 @@ export class EmployeeService {
 
   getEmployee(empid: number): Observable<Employee> {
     const url= `${this.employeeUrlForId}/${empid}`;
-    return this.http.get<Employee[]>(url).pipe(
-      map(employee => employee[0]),
+    return this.http.get<Employee>(url).pipe(
+      map(employee => employee),
       catchError(this.handleError<Employee>(`getEmployee empid=${empid}`))
     );
   }

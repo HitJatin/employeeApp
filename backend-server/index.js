@@ -22,3 +22,7 @@ app.get('/', (request, response) => {
   });
   
 app.get('/records', db.getAllEmployees);
+app.post('/records', db.addEmployee);
+app.get('/record/:emp_id', db.getEmployeeById);
+app.put('/record/:emp_id', db.updateEmployee);
+app.delete('/record/:emp_id', db.deleteEmployee);
