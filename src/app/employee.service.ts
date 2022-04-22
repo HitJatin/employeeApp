@@ -11,8 +11,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class EmployeeService {
 
-  private employeeUrl = 'http://localhost:3000/records';
-  private employeeUrlForId = 'http://localhost:3000/record';
+  private employeeUrl = 'https://emp-management-db.herokuapp.com/records';
+  private employeeUrlForId = 'https://emp-management-db.herokuapp.com/record';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
